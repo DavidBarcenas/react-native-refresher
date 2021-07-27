@@ -1,11 +1,11 @@
-import { Login } from './components/Login';
+import { Users } from './components/Users';
 
 const App = () => {
   return (
     <div className="mt-2">
       <h1>React Refresher</h1>
       <hr />
-      <Login />
+      <Users />
     </div>
   )
 }
