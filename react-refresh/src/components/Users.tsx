@@ -1,17 +1,7 @@
-import { useEffect, useState } from 'react';
-import { reqResAPI } from '../api/reqRes';
-import { ReqRes, User } from '../interfaces/reqRes';
+import { useUsers } from '../hooks/useUsers';
 
 export const Users = () => {
-    const [users, setUsers] = useState<User[]>([])
-
-    useEffect(() => {
-        reqResAPI.get<ReqRes>('/users')
-            .then(resp => {
-                setUsers(resp.data.data)
-            })
-            .catch(console.warn)
-    }, [])
+    const {users, nextPage, prevPage} = useUsers()
 
     return (
         <>
@@ -30,7 +20,10 @@ export const Users = () => {
                         users.map(user => (
                             <tr key={user.id}>
                                 <td>
-                                    <img src={user.avatar} alt={user.first_name} className="img-thumbnail" width="60"  />
+                                    <img src={user.avatar} 
+                                         alt={user.first_name} 
+                                         width="60"  
+                                    />
                                 </td>
                                 <td>{user.first_name}</td>
                                 <td>{user.last_name}</td>
@@ -40,6 +33,8 @@ export const Users = () => {
                     }    
                 </tbody> 
             </table> 
+            <button onClick={prevPage} className="btn btn-primary">Prev</button>
+            <button onClick={nextPage} className="btn btn-primary ms-2">Next</button>
         </>
     )
 }
