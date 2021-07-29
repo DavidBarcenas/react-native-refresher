@@ -8,10 +8,9 @@ export const BoxObjectModelScreen = () => {
 
     return (
         <View style={styles.box}>
-            <View style={styles.purpleBox} />
-            <View style={styles.orangeBox} />
-            <Text style={styles.title}>W: {width}</Text>
-            <Text style={styles.title}>H: {height}</Text>
+            <View style={styles.purpleBox}></View>
+            <View style={styles.orangeBox}></View>
+            <View style={styles.blueBox}></View>
         </View>
     )
 }
@@ -19,15 +18,32 @@ export const BoxObjectModelScreen = () => {
 
 const styles = StyleSheet.create({
     box: {
-        height: '100%'
+        backgroundColor: '#28425b',
+        height: height,
+        justifyContent: 'space-between'
     },
     purpleBox: {
+        alignSelf: 'flex-end',
         backgroundColor: '#5856d6',
-        height: '50%'
+        width: 100,
+        height: 100,
+        borderWidth: 10,
+        borderColor: '#fff'
     },
     orangeBox: {
         backgroundColor: '#f0a23b',
-        height: '40%'
+        width: 100,
+        height: 100,
+        borderWidth: 10,
+        borderColor: '#fff'
+    },
+    blueBox: {
+        alignSelf: 'center',
+        backgroundColor: 'skyblue',
+        width: 100,
+        height: 100,
+        borderWidth: 10,
+        borderColor: '#fff'
     },
     title: {
         fontSize: 25,
