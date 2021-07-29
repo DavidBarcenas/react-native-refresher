@@ -10,6 +10,12 @@ export const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         paddingHorizontal: 20,
     },
+    row: {
+        flexDirection: 'row',
+        justifyContent: 'center',
+        marginBottom: 18,
+        paddingHorizontal: 10
+    },
     mainText: {
         color: '#fff',
         fontSize: 60,
@@ -20,16 +26,4 @@ export const styles = StyleSheet.create({
         fontSize: 30,
         textAlign: 'right'
     },
-    button: {
-        width: 80,
-        height: 80,
-        backgroundColor: '#333',
-        borderRadius: 100,
-        justifyContent: 'center',
-    },
-    buttonText: {   
-        color: '#fff',
-        fontSize: 30,
-        textAlign: 'center'
-    }
 })
