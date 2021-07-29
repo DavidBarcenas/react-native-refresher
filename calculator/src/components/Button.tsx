@@ -6,6 +6,7 @@ interface Props {
     color?: string;
     background?: string;
     extend?: boolean;
+    onPress: (action: string) => void;
 }
 
 export const Button = ({
@@ -13,9 +14,10 @@ export const Button = ({
     color = '#fff',
     extend = false,
     text, 
+    onPress
 } : Props) => {
     return (
-        <TouchableOpacity activeOpacity={0.5}>
+        <TouchableOpacity activeOpacity={0.5} onPress={() => onPress(text)}>
             <View style={{
                 ...styles.button, 
                 backgroundColor: background, 
