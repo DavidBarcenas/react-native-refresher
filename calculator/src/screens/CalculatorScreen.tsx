@@ -17,6 +17,29 @@ export const CalculatorScreen = () => {
                 <Button text='del' color={darkGray} />
                 <Button text='/' background={orange} />
             </View>
+            <View style={styles.row}>
+                <Button text='7' background={darkGray} />
+                <Button text='8' background={darkGray} />
+                <Button text='9' background={darkGray} />
+                <Button text='X' background={orange} />
+            </View>
+            <View style={styles.row}>
+                <Button text='4' background={darkGray} />
+                <Button text='5' background={darkGray} />
+                <Button text='6' background={darkGray} />
+                <Button text='-' background={orange} />
+            </View>
+            <View style={styles.row}>
+                <Button text='1' background={darkGray} />
+                <Button text='2' background={darkGray} />
+                <Button text='3' background={darkGray} />
+                <Button text='+' background={orange} />
+            </View>
+            <View style={styles.row}>
+                <Button text='0' background={darkGray} extend />
+                <Button text='.' background={darkGray} />
+                <Button text='=' background={orange} />
+            </View>
         </View>
     )
 }

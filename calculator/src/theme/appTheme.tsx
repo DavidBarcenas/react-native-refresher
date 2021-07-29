@@ -19,7 +19,8 @@ export const styles = StyleSheet.create({
     mainText: {
         color: '#fff',
         fontSize: 60,
-        textAlign: 'right'
+        textAlign: 'right',
+        marginBottom: 15
     },
     secondaryText: {
         color: 'rgba(255,255,255,0.5)',
