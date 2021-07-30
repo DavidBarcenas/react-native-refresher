@@ -1,12 +1,13 @@
+import 'react-native-gesture-handler';
 import React from 'react'
-import { SafeAreaView } from 'react-native'
-import { BoxObjectModelScreen } from './src/screens/BoxObjectModelScreen'
+import { Text } from 'react-native'
+import { NavigationContainer } from '@react-navigation/native';
 
 const App = () => {
   return (
-    <SafeAreaView>
-      <BoxObjectModelScreen />
-    </SafeAreaView>
+    <NavigationContainer>
+      <Text>App screen</Text>
+    </NavigationContainer>
   )
 }
 
