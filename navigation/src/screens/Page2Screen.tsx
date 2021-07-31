@@ -1,10 +1,15 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react'
-import { Text, View } from 'react-native';
+import { Button, Text, View } from 'react-native';
+import { styles } from '../theme/appTheme';
 
 export const Page2Screen = () => {
+    const navigation = useNavigation()
+
     return (
-        <View>
-            <Text>Page2Screen</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>Page2Screen</Text>
+            <Button title="Go to page 3" onPress={() => navigation.navigate('Page3Screen')} />
         </View>
     )
 }

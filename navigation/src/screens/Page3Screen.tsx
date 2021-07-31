@@ -1,10 +1,16 @@
+import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react'
-import { Text, View } from 'react-native';
+import { Button, Text, View } from 'react-native';
+import { styles } from '../theme/appTheme';
 
-export const Page3Screen = () => {
+interface Props extends StackScreenProps<any, any> {}
+
+export const Page3Screen = ({navigation}: Props) => {
     return (
-        <View>
-            <Text>Page3Screen</Text>
+        <View style={styles.container}>
+            <Text style={styles.title}>Page3Screen</Text>
+            <Button title="Go back 1" onPress={() => navigation.pop()} />
+            <Button title="Go to Page1" onPress={() => navigation.popToTop()} />
         </View>
     )
 }
