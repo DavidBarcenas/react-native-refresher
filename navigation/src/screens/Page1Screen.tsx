@@ -1,11 +1,23 @@
-import React from 'react'
-import { StackScreenProps } from '@react-navigation/stack';
+import React, { useEffect } from 'react'
+import { DrawerScreenProps } from '@react-navigation/drawer';
 import { Button, Text, View } from 'react-native';
 import { styles } from '../theme/appTheme';
 
-interface Props extends StackScreenProps<any, any> {}
+interface Props extends DrawerScreenProps<any, any> {}
 
 export const Page1Screen = ({navigation}: Props) => {
+
+    useEffect(() => {
+        navigation.setOptions({
+            headerLeft: () => (
+                <Button 
+                    title='Menu' 
+                    onPress={() => navigation.toggleDrawer()} 
+                />
+            )
+        })
+    }, [])
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Page1Screen</Text>
