@@ -12,5 +12,15 @@ export const styles = StyleSheet.create({
         width: 150,
         height: 150,
         alignSelf: 'center'
+    },
+    navContainer: {
+        marginVertical: 15,
+        paddingHorizontal: 20
+    },
+    navItem: {
+        marginBottom: 10
+    },
+    navText: {
+        fontSize: 16
     }
 })
