@@ -7,5 +7,10 @@ export const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         marginBottom: 10
+    },
+    avatar: {
+        width: 150,
+        height: 150,
+        alignSelf: 'center'
     }
 })
