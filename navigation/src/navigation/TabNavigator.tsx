@@ -1,15 +1,20 @@
 import React from 'react'
+// import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Tab1Screen } from '../screens/Tab1Screen';
 import { Tab2Screen } from '../screens/Tab2Screen';
 import { StackNavigation } from './StackNavigator';
-import { Text } from 'react-native';
-
-const Tab = createBottomTabNavigator();
+import { Text, Platform } from 'react-native';
 
 export const TabNavigator = () => {
+  return Platform.OS === 'ios' ? <TabIOS /> : <TabIOS />
+}
+
+const createTabIOS = createBottomTabNavigator();
+
+const TabIOS = () => {
   return (
-    <Tab.Navigator 
+    <createTabIOS.Navigator 
       tabBarOptions={{
         labelStyle: {
           fontSize: 15
@@ -37,10 +42,10 @@ export const TabNavigator = () => {
       })}
     >
       {/* <Tab.Screen name="Tab1Screen" options={{title: 'Blue', tabBarIcon: (props) => tabIcon(props)}} component={Tab1Screen} /> */}
-      <Tab.Screen name="Tab1Screen" options={{title: 'Blue'}} component={Tab1Screen} />
-      <Tab.Screen name="Tab2Screen" options={{title: 'Purple'}}  component={Tab2Screen} />
-      <Tab.Screen name="StackNavigator" options={{title: 'Stack'}} component={StackNavigation} />
-    </Tab.Navigator>
+      <createTabIOS.Screen name="Tab1Screen" options={{title: 'Blue'}} component={Tab1Screen} />
+      <createTabIOS.Screen name="Tab2Screen" options={{title: 'Purple'}}  component={Tab2Screen} />
+      <createTabIOS.Screen name="StackNavigator" options={{title: 'Stack'}} component={StackNavigation} />
+    </createTabIOS.Navigator>
   )
 }
 
