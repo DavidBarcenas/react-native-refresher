@@ -22,5 +22,15 @@ export const styles = StyleSheet.create({
     },
     navText: {
         fontSize: 16
+    },
+    tab: {
+        width: '100%',
+        height: '100%',
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    tabContent: {
+        fontSize: 30,
+        color: '#fff'
     }
 })
