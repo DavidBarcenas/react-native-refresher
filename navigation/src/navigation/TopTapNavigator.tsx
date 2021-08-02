@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { Text } from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 import { Tab1Screen } from '../screens/Tab1Screen';
 import { Tab2Screen } from '../screens/Tab2Screen';
@@ -27,16 +27,16 @@ export const TopTapNavigator = () => {
         
                   switch (route.name) {
                     case 'Tab1':
-                      iconName = 't1'
+                      iconName = 'analytics'
                       break;
                     case 'Tab2':
-                      iconName = 't2'
+                      iconName = 'bookmark'
                       break;
                     default:
-                      iconName = 'start'
+                      iconName = 'cellular'
                       break;
                   }
-                  return <Text style={{color}}>{iconName}</Text>
+                  return <Icon name={iconName} size={20} color="#673ab7" />
                 }
               })}>
             <Tab.Screen name="Tab1" component={Tab1Screen} />

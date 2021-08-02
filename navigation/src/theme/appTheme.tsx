@@ -18,10 +18,12 @@ export const styles = StyleSheet.create({
         paddingHorizontal: 20
     },
     navItem: {
+        flexDirection: 'row',
         marginBottom: 10
     },
     navText: {
-        fontSize: 16
+        fontSize: 16,
+        marginLeft: 10
     },
     tab: {
         width: '100%',

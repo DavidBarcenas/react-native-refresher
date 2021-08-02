@@ -1,10 +1,11 @@
 import React from 'react'
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/Ionicons';
+
 import { Tab1Screen } from '../screens/Tab1Screen';
 import { StackNavigation } from './StackNavigator';
 import { Text, Platform } from 'react-native';
-import { SettingsScreen } from '../screens/SettingsScreen';
 import { TopTapNavigator } from './TopTapNavigator';
 
 export const TabNavigator = () => Platform.OS === 'ios' ? <BottomTabIOS /> : <BottomTabAndroid />
@@ -23,21 +24,21 @@ const BottomTabAndroid = () => {
 
           switch (route.name) {
             case 'Tab1':
-              iconName = 't1'
+              iconName = 'cloudy'
               break;
             case 'Tab2':
-              iconName = 't2'
+              iconName = 'diamond'
               break;
             default:
-              iconName = 'start'
+              iconName = 'cube'
               break;
           }
-          return <Text style={{color}}>{iconName}</Text>
+          return <Icon name={iconName} size={20} color="#fff" />
         }
       })}>
       <TabAndroid.Screen name="Tab1" component={Tab1Screen} />
       <TabAndroid.Screen name="TopTab" component={TopTapNavigator} />
-      <TabAndroid.Screen name="Settings" component={SettingsScreen} />
+      <TabAndroid.Screen name="Stack" component={StackNavigation} />
     </TabAndroid.Navigator>
   );
 }

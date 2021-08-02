@@ -5,10 +5,12 @@ import {
     DrawerContentOptions, 
     DrawerContentScrollView} 
 from '@react-navigation/drawer';
-import { SettingsScreen } from '../screens/SettingsScreen';
 import { Image, Text, View, TouchableOpacity } from 'react-native';
-import { styles } from '../theme/appTheme';
+import Icon from 'react-native-vector-icons/Ionicons';
+
+import { SettingsScreen } from '../screens/SettingsScreen';
 import { TabNavigator } from './TabNavigator';
+import { styles } from '../theme/appTheme';
 
 const Drawer = createDrawerNavigator();
 
@@ -33,11 +35,13 @@ const SidebarNav = ({navigation}: DrawerContentComponentProps<DrawerContentOptio
                 <TouchableOpacity 
                     style={styles.navItem} 
                     onPress={() => navigation.navigate('Tabs')}>
+                    <Icon name='navigate' size={20} color="#2196f3" />
                     <Text style={styles.navText}>Stack Navigator</Text>
                 </TouchableOpacity>
                 <TouchableOpacity 
                     style={styles.navItem}
                     onPress={() => navigation.navigate('SettingsScreen')}>
+                    <Icon name='settings' size={20} color="#2196f3" />
                     <Text style={styles.navText}>Settings</Text>
                 </TouchableOpacity>
             </View>
