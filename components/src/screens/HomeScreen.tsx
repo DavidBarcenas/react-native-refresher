@@ -9,7 +9,7 @@ import { MenuItem, menuItems } from '../data/menuData';
 const Item = ({ name, icon }: MenuItem) => (
     <View style={styles.item}>
         <View style={{flexDirection: 'row'}}>
-            <Icon name={icon} size={25} color="gray" />
+            <Icon name={icon} size={25} color="#536dfe" />
             <Text style={styles.itemText}>{name}</Text>
         </View>
         <Icon name='chevron-forward-outline' size={25} color='gray' />
