@@ -1,0 +1,23 @@
+export interface MenuItem {
+    name: string;
+    icon: string;
+    component: string;
+}
+
+export const menuItems: MenuItem[] = [
+    {
+        name: 'Animations',
+        icon: 'cube-outline',
+        component: 'AnimationScreen'
+    },
+    {
+        name: 'Animations 2',
+        icon: 'albums-outline',
+        component: 'Animation2Screen'
+    },
+    {
+        name: 'Switches',
+        icon: 'toggle-outline',
+        component: 'SwitchScreen'
+    }
+]

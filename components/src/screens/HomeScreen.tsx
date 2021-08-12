@@ -3,25 +3,8 @@ import Icon from "react-native-vector-icons/Ionicons";
 import { View, FlatList, StyleSheet, Text } from 'react-native';
 import { globalStyles } from '../theme/globalStyles';
 import { TouchableOpacity } from 'react-native';
+import { MenuItem, menuItems } from '../data/menuData';
 
-interface MenuItem {
-    name: string;
-    icon: string;
-    component: string;
-}
-
-const menuItems: MenuItem[] = [
-    {
-        name: 'Animations',
-        icon: 'cube-outline',
-        component: 'AnimationScreen'
-    },
-    {
-        name: 'Animations 2',
-        icon: 'albums-outline',
-        component: 'Animation2Screen'
-    }
-]
 
 const Item = ({ name, icon }: MenuItem) => (
     <View style={styles.item}>
