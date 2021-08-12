@@ -1,5 +1,4 @@
-import React, { useState } from 'react'
-import { Dimensions, View } from 'react-native';
+import React from 'react'
 import { 
     Keyboard, 
     KeyboardAvoidingView, 
@@ -8,24 +7,20 @@ import {
     StyleSheet, 
     Text, 
     TextInput, 
-    TouchableWithoutFeedback 
+    TouchableWithoutFeedback, 
+    View
 } from 'react-native';
 
-const height = Dimensions.get('window').height
+import { useForm } from '../hooks/useForm';
+import { CustomSwitch } from '../components/customSwitch';
 
 export const TextInputScreen = () => {
-    const [form, setForm] = useState({
+    const {name, email, phone, conditions, onChange} = useForm({
         name: '',
         email: '',
-        phone: ''
+        phone: '',
+        conditions: false
     })
-
-    const onChange = (value: string, field: string) => {
-        setForm({
-            ...form,
-            [field]: value
-        })
-    }
 
     return (
         <KeyboardAvoidingView 
@@ -34,7 +29,7 @@ export const TextInputScreen = () => {
         >
             <ScrollView>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                    <View >
+                    <View>
                         <TextInput
                             style={styles.input}
                             placeholder='Write your name'
@@ -54,8 +49,15 @@ export const TextInputScreen = () => {
                             onChangeText={value => onChange(value, 'phone')}
                             keyboardType='number-pad'
                         />
+                        <View style={styles.check}>
+                            <Text>Accept conditions</Text>
+                            <CustomSwitch 
+                                isEnabled={conditions} 
+                                onChange={value => onChange(value, 'conditions')} 
+                            />
+                        </View>
                         <Text style={styles.showData}>
-                            {JSON.stringify(form, null, 4)}
+                            {JSON.stringify({name, email, phone, conditions}, null, 4)}
                         </Text>
                     </View>
                 </TouchableWithoutFeedback>
@@ -75,6 +77,12 @@ const styles = StyleSheet.create({
       margin: 12,
       borderWidth: 1,
       padding: 10,
+    },
+    check: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        padding: 10
     },
     showData: {
         fontSize: 16
