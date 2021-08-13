@@ -30,4 +30,9 @@ export const menuItems: MenuItem[] = [
         icon: 'chatbox-ellipses-outline',
         component: 'TextInputScreen'
     },
+    {
+        name: 'Pull to refresh',
+        icon: 'refresh-circle-outline',
+        component: 'PullRefreshScreen'
+    },
 ]
