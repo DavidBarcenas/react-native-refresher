@@ -18,13 +18,6 @@ export const Navigation = () => {
   return (
     <Stack.Navigator screenOptions={{
         headerTitleAlign: 'center',
-        headerTintColor: '#fff',
-        headerStyle: {
-          backgroundColor: '#536dfe'
-        },
-        cardStyle: {
-          backgroundColor: '#fff'
-        },
         animationEnabled: true,
       }}>
       <Stack.Screen name="Home" component={HomeScreen} />
