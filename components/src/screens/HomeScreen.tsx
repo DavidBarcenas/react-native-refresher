@@ -7,11 +7,11 @@ import { MenuItem, menuItems } from '../data/menuData';
 import { ThemeContext } from '../context/theme/ThemeContext';
 
 
-const Item = ({ name, icon, color }: MenuItem) => (
+const Item = ({ name, icon, iconColor, textColor }: MenuItem) => (
     <View style={styles.item}>
         <View style={{ flexDirection: 'row' }}>
-            <Icon name={icon} size={25} color={color} />
-            <Text style={styles.itemText}>{name}</Text>
+            <Icon name={icon} size={25} color={iconColor} />
+            <Text style={{ ...styles.itemText, color: textColor }}>{name}</Text>
         </View>
         <Icon name='chevron-forward-outline' size={25} color='gray' />
     </View>
@@ -27,7 +27,8 @@ export const HomeScreen = ({ navigation }: any) => {
                 name={item.name}
                 icon={item.icon}
                 component={item.component}
-                color={theme.colors.primary}
+                iconColor={theme.colors.primary}
+                textColor={theme.colors.text}
             />
         </TouchableOpacity>
     )

@@ -2,7 +2,8 @@ export interface MenuItem {
     name: string;
     icon: string;
     component: string;
-    color?: string;
+    iconColor?: string;
+    textColor?: string;
 }
 
 export const menuItems: MenuItem[] = [
