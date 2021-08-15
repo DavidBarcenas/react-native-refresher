@@ -6,7 +6,7 @@ import { Navigation } from './src/navigation/StackNavigation';
 const MyTheme: Theme = {
     dark: true,
     colors: {
-      ...DarkTheme.colors
+      ...DefaultTheme.colors
     },
   };
 

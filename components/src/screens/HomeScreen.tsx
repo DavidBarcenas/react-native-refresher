@@ -4,22 +4,17 @@ import { View, FlatList, StyleSheet, Text } from 'react-native';
 import { globalStyles } from '../theme/globalStyles';
 import { TouchableOpacity } from 'react-native';
 import { MenuItem, menuItems } from '../data/menuData';
-import { useTheme } from '@react-navigation/native';
 
 
-const Item = ({ name, icon }: MenuItem) => {
-    const {colors} = useTheme()
-    
-    return (
-        <View style={styles.item}>
-            <View style={{flexDirection: 'row'}}>
-                <Icon name={icon} size={25} color="#536dfe" />
-                <Text style={{...styles.itemText, color: colors.text}}>{name}</Text>
-            </View>
-            <Icon name='chevron-forward-outline' size={25} color='gray' />
+const Item = ({ name, icon }: MenuItem) => (
+    <View style={styles.item}>
+        <View style={{flexDirection: 'row'}}>
+            <Icon name={icon} size={25} color="#536dfe" />
+            <Text style={styles.itemText}>{name}</Text>
         </View>
-    )
-}
+        <Icon name='chevron-forward-outline' size={25} color='gray' />
+    </View>
+  );
   
 
 export const HomeScreen = ({navigation}: any) => {
