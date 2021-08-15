@@ -56,7 +56,7 @@ export const menuItems: MenuItem[] = [
         component: 'SlideScreen'
     },
     {
-        name: 'Thems',
+        name: 'Themes',
         icon: 'flask-outline',
         component: 'ThemeScreen'
     },
