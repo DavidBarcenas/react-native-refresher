@@ -30,6 +30,9 @@ export const Navigation = () => {
                 headerTintColor: '#fff',
                 headerStyle: {
                     backgroundColor: theme.colors.primary
+                },
+                cardStyle: {
+                    backgroundColor: theme.colors.background
                 }
             }}>
                 <Stack.Screen name="Home" component={HomeScreen} />
