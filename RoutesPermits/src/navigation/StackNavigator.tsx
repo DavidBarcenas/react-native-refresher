@@ -16,8 +16,8 @@ export const StackNavigator = () => {
         }
       }}
     >
-      <Stack.Screen name="Map" component={MapScreen} />
       <Stack.Screen name="Permissions" component={PermissionsScreen} />
+      <Stack.Screen name="Map" component={MapScreen} />
     </Stack.Navigator>
   )
 }
