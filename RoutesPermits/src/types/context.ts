@@ -10,6 +10,5 @@ export type PermissionProviderProps = {
 
 export type PermissionContextProps = {
   permissions: PermissionState
-  askLocationPermission: () => void
-  checkLocationPermission: () => void
+  handleLocationPermission: (actionType: 'request' | 'check') => void
 }

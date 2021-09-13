@@ -1,12 +1,8 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { AppState, AppStateStatus, Platform } from 'react-native';
-import { check, PERMISSIONS, PermissionStatus, request } from 'react-native-permissions';
+import { check, Permission, PERMISSIONS, PermissionStatus, request } from 'react-native-permissions';
 
-import type {
-  PermissionContextProps,
-  PermissionProviderProps,
-  PermissionState
-} from '../types/context';
+import type { PermissionContextProps, PermissionProviderProps, PermissionState } from '../types/context';
 
 const initialState: PermissionState = {
   locationStatus: 'unavailable'
@@ -17,12 +13,26 @@ export const PermissionContext = createContext({} as PermissionContextProps)
 export const PermissionProvider = ({ children }: PermissionProviderProps) => {
   const [permissions, setPermissions] = useState(initialState)
 
-  const handleAppState = (state: AppStateStatus): void => {
-    if (state !== 'active') {
-      return;
+  const handleLocationPermission = async (actionType: 'request' | 'check'): Promise<void> => {
+    const actions = {
+      request: (permission: Permission) => request(permission),
+      check: (permission: Permission) => check(permission)
     }
 
-    checkLocationPermission()
+    let locationStatus: PermissionStatus;
+
+    if (Platform.OS === 'ios') {
+      locationStatus = await actions[actionType](PERMISSIONS.IOS.LOCATION_WHEN_IN_USE)
+    } else {
+      locationStatus = await actions[actionType](PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION)
+    }
+
+    setPermissions({ ...permissions, locationStatus })
+  }
+
+  const handleAppState = (state: AppStateStatus): void => {
+    if (state !== 'active') { return; }
+    handleLocationPermission('check')
   }
 
   useEffect(() => {
@@ -33,43 +43,13 @@ export const PermissionProvider = ({ children }: PermissionProviderProps) => {
     }
   }, [])
 
-  const askLocationPermission = async (): Promise<void> => {
-    let locationPermission: PermissionStatus;
-
-    if (Platform.OS === 'ios') {
-      locationPermission = await request(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE)
-    } else {
-      locationPermission = await request(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION)
-    }
-
-    setPermissions({
-      ...permissions,
-      locationStatus: locationPermission
-    })
-  }
-
-  const checkLocationPermission = async (): Promise<void> => {
-    let locationPermission: PermissionStatus;
-
-    if (Platform.OS === 'ios') {
-      locationPermission = await check(PERMISSIONS.IOS.LOCATION_WHEN_IN_USE)
-    } else {
-      locationPermission = await check(PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION)
-    }
-
-    setPermissions({
-      ...permissions,
-      locationStatus: locationPermission
-    })
-  }
-
   return (
     <PermissionContext.Provider value={{
       permissions,
-      askLocationPermission,
-      checkLocationPermission
+      handleLocationPermission,
     }}>
       {children}
     </PermissionContext.Provider>
   )
 }
+
