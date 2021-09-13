@@ -1,10 +1,10 @@
 import React from 'react'
 import { Text, View } from 'react-native'
 
-export const HomeScreen = () => {
+export const MapScreen = () => {
   return (
     <View>
-      <Text>Home</Text>
+      <Text>Map Screen</Text>
     </View>
   )
 }
