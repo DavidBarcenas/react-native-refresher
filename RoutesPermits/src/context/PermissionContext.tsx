@@ -31,7 +31,10 @@ export const PermissionProvider = ({ children }: PermissionProviderProps) => {
   }
 
   const handleAppState = (state: AppStateStatus): void => {
-    if (state !== 'active') { return; }
+    if (state !== 'active') {
+      return;
+    }
+
     handleLocationPermission('check')
   }
 
