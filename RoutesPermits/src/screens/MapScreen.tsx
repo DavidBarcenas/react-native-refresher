@@ -1,12 +1,22 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import MapView, { Marker } from 'react-native-maps';
 import { View } from 'react-native'
 
 import { useLocation } from '../hooks/useLocation';
 import { LoadingScreen } from './LoadingScreen';
+import { Fab } from '../components/Fab';
 
 export const MapScreen = () => {
-  const { hasLocation, initialPosition } = useLocation()
+  const { hasLocation, initialPosition, getCurrentLocation } = useLocation()
+  const mapViewRef = useRef<MapView | null>()
+
+  const goToUserPosition = async () => {
+    const coords = await getCurrentLocation()
+
+    mapViewRef.current?.animateCamera({
+      center: coords
+    })
+  }
 
   if (!hasLocation) {
     return <LoadingScreen />
@@ -15,6 +25,7 @@ export const MapScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       <MapView
+        ref={el => mapViewRef.current = el}
         style={{ flex: 1 }}
         showsUserLocation
         initialRegion={{
@@ -34,6 +45,7 @@ export const MapScreen = () => {
           description='my desc'
         />
       </MapView>
+      <Fab iconName="explore" onPress={goToUserPosition} />
     </View>
   )
 }
