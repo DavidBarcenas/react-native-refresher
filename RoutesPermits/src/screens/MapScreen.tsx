@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import MapView, { Marker } from 'react-native-maps';
 import { View } from 'react-native'
 
@@ -7,16 +7,42 @@ import { LoadingScreen } from './LoadingScreen';
 import { Fab } from '../components/Fab';
 
 export const MapScreen = () => {
-  const { hasLocation, initialPosition, getCurrentLocation } = useLocation()
+  const {
+    hasLocation,
+    initialPosition,
+    getCurrentLocation,
+    userPosition,
+    followUserPosition,
+    stopFollowUserPosition
+  } = useLocation()
   const mapViewRef = useRef<MapView | null>()
+  const following = useRef<boolean>(true)
 
   const goToUserPosition = async () => {
     const coords = await getCurrentLocation()
 
+    following.current = true
+
     mapViewRef.current?.animateCamera({
       center: coords
     })
+
   }
+
+  useEffect(() => {
+    followUserPosition()
+    return () => {
+      stopFollowUserPosition()
+    }
+  }, [])
+
+  useEffect(() => {
+    if (following.current) {
+      mapViewRef.current?.animateCamera({
+        center: userPosition
+      })
+    }
+  }, [userPosition])
 
   if (!hasLocation) {
     return <LoadingScreen />
@@ -34,6 +60,7 @@ export const MapScreen = () => {
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
+        onTouchStart={() => following.current = false}
       >
         <Marker
           image={require('../assets/img/custom-marker.png')}
