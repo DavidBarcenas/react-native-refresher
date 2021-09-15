@@ -1,18 +1,16 @@
-import React, { useEffect } from 'react'
-import { Text, View } from 'react-native'
+import React from 'react'
 import MapView, { Marker } from 'react-native-maps';
-import Geolocation from '@react-native-community/geolocation';
+import { View } from 'react-native'
+
+import { useLocation } from '../hooks/useLocation';
+import { LoadingScreen } from './LoadingScreen';
 
 export const MapScreen = () => {
-  useEffect(() => {
-    Geolocation.getCurrentPosition(
-      info => console.log(info),
-      err => console.log(err),
-      {
-        enableHighAccuracy: true
-      }
-    )
-  }, [])
+  const { hasLocation, initialPosition } = useLocation()
+
+  if (!hasLocation) {
+    return <LoadingScreen />
+  }
 
   return (
     <View style={{ flex: 1 }}>
@@ -20,8 +18,8 @@ export const MapScreen = () => {
         style={{ flex: 1 }}
         showsUserLocation
         initialRegion={{
-          latitude: 37.78825,
-          longitude: -122.4324,
+          latitude: initialPosition.latitude,
+          longitude: initialPosition.longitude,
           latitudeDelta: 0.0922,
           longitudeDelta: 0.0421,
         }}
@@ -29,8 +27,8 @@ export const MapScreen = () => {
         <Marker
           image={require('../assets/img/custom-marker.png')}
           coordinate={{
-            latitude: 37.78825,
-            longitude: -122.4324
+            latitude: initialPosition.latitude,
+            longitude: initialPosition.longitude,
           }}
           title='Here'
           description='my desc'
