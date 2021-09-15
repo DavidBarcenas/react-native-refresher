@@ -11,6 +11,7 @@ export const useLocation = () => {
   const [hasLocation, setHasLocation] = useState(false)
   const [initialPosition, setInitialPosition] = useState<Location>(defaultPosition)
   const [userPosition, setUserPosition] = useState<Location>(defaultPosition)
+  const [routeLine, setRouteLine] = useState<Location[]>([])
   const watchPositionID = useRef<number>()
 
   useEffect(() => {
@@ -18,6 +19,7 @@ export const useLocation = () => {
       .then(({latitude, longitude}) => {
         setInitialPosition({ latitude, longitude })
         setUserPosition({ latitude, longitude })
+        setRouteLine(routes => [...routes, {latitude, longitude}])
         setHasLocation(true)
       })
       .catch(error => console.log(error))
@@ -45,6 +47,7 @@ export const useLocation = () => {
           latitude: coords.latitude,
           longitude: coords.longitude,
         })
+        setRouteLine(routes => [...routes, {latitude: coords.latitude, longitude: coords.longitude}])
       },
       error => console.log(error),
       {
@@ -66,6 +69,7 @@ export const useLocation = () => {
     getCurrentLocation,
     followUserPosition,
     userPosition,
-    stopFollowUserPosition
+    stopFollowUserPosition,
+    routeLine
   }
 }

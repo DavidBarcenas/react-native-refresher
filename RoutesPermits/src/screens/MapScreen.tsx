@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, Polyline } from 'react-native-maps';
 import { View } from 'react-native'
 
 import { useLocation } from '../hooks/useLocation';
@@ -13,7 +13,8 @@ export const MapScreen = () => {
     getCurrentLocation,
     userPosition,
     followUserPosition,
-    stopFollowUserPosition
+    stopFollowUserPosition,
+    routeLine
   } = useLocation()
   const mapViewRef = useRef<MapView | null>()
   const following = useRef<boolean>(true)
@@ -71,6 +72,7 @@ export const MapScreen = () => {
           title='Here'
           description='my desc'
         />
+        <Polyline coordinates={routeLine} strokeColor="black" strokeWidth={3} />
       </MapView>
       <Fab iconName="explore" onPress={goToUserPosition} />
     </View>
