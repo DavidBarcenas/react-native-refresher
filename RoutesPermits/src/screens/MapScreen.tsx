@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import MapView, { Marker, Polyline } from 'react-native-maps';
 import { View } from 'react-native'
 
@@ -18,6 +18,7 @@ export const MapScreen = () => {
   } = useLocation()
   const mapViewRef = useRef<MapView | null>()
   const following = useRef<boolean>(true)
+  const [showPolyline, setshowPolyline] = useState(false)
 
   const goToUserPosition = async () => {
     const coords = await getCurrentLocation()
@@ -72,9 +73,13 @@ export const MapScreen = () => {
           title='Here'
           description='my desc'
         />
-        <Polyline coordinates={routeLine} strokeColor="black" strokeWidth={3} />
+        {
+          showPolyline &&
+          <Polyline coordinates={routeLine} strokeColor="black" strokeWidth={3} />
+        }
       </MapView>
-      <Fab iconName="explore" onPress={goToUserPosition} />
+      <Fab iconName="explore" onPress={(goToUserPosition)} />
+      <Fab iconName="brush" onPress={() => { setshowPolyline(prev => !prev) }} style={{ bottom: 80 }} />
     </View>
   )
 }
