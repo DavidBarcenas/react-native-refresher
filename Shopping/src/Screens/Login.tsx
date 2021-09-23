@@ -1,6 +1,6 @@
-import { StackScreenProps } from '@react-navigation/stack';
 import React from 'react';
 import { Keyboard, KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import type { StackScreenProps } from '@react-navigation/stack';
 
 import { Background } from '../components/Background';
 import { ReactLogo } from '../components/ReactLogo';
