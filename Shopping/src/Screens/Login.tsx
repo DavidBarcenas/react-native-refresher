@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import {
   Keyboard,
   KeyboardAvoidingView,
@@ -14,10 +14,13 @@ import { Background } from '../components/Background';
 import { ReactLogo } from '../components/ReactLogo';
 import { useForm } from '../hooks/useForm';
 import { loginStyles } from '../theme/login';
+import { AuthContext } from '../context/authContext';
 
 type Props = StackScreenProps<any, any>;
 
 export const Login = ({ navigation }: Props) => {
+  const { signIn } = useContext(AuthContext);
+
   const { form, onChange } = useForm({
     email: '',
     password: '',
@@ -27,6 +30,7 @@ export const Login = ({ navigation }: Props) => {
 
   const handleLogin = () => {
     Keyboard.dismiss();
+    signIn({ email, password });
   };
 
   return (
@@ -52,6 +56,7 @@ export const Login = ({ navigation }: Props) => {
             onChangeText={value => onChange(value, 'email')}
             value={email}
             onSubmitEditing={handleLogin}
+            style={{ color: '#fff' }}
           />
 
           <Text style={loginStyles.label}>Password:</Text>
@@ -64,6 +69,7 @@ export const Login = ({ navigation }: Props) => {
             onChangeText={value => onChange(value, 'password')}
             value={password}
             onSubmitEditing={handleLogin}
+            style={{ color: '#fff' }}
           />
 
           <View style={loginStyles.buttonContainer}>

@@ -13,4 +13,9 @@ export type User = {
   img?: string;
 };
 
+export type LoginData = {
+  email: string;
+  password: string;
+};
+
 export type Status = 'checking' | 'authenticated' | 'not-authenticated';
