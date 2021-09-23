@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
 
 export const loginStyles = StyleSheet.create({
   formContainer: {
@@ -6,36 +6,36 @@ export const loginStyles = StyleSheet.create({
     paddingHorizontal: 30,
     justifyContent: 'center',
     height: 600,
-    marginBottom: 50
+    marginBottom: 50,
   },
   title: {
     color: '#fff',
     fontSize: 30,
     fontWeight: 'bold',
-    marginTop: 20
+    marginTop: 20,
   },
   label: {
     marginTop: 25,
     color: '#fff',
-    fontWeight: 'bold'
+    fontWeight: 'bold',
   },
   buttonContainer: {
     alignItems: 'center',
-    marginTop: 50
+    marginTop: 50,
   },
   button: {
     borderWidth: 2,
     borderColor: '#fff',
     paddingHorizontal: 20,
     paddingVertical: 5,
-    borderRadius: 100
+    borderRadius: 100,
   },
   buttonText: {
     color: '#fff',
-    fontSize: 18
+    fontSize: 18,
   },
   newUserContainer: {
     alignItems: 'flex-end',
-    marginTop: 10
-  }
-})
+    marginTop: 10,
+  },
+});

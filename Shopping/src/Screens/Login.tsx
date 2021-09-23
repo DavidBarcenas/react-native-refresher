@@ -1,5 +1,13 @@
 import React from 'react';
-import { Keyboard, KeyboardAvoidingView, Platform, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import {
+  Keyboard,
+  KeyboardAvoidingView,
+  Platform,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 import type { StackScreenProps } from '@react-navigation/stack';
 
 import { Background } from '../components/Background';
@@ -7,19 +15,19 @@ import { ReactLogo } from '../components/ReactLogo';
 import { useForm } from '../hooks/useForm';
 import { loginStyles } from '../theme/login';
 
-type Props = StackScreenProps<any, any>
+type Props = StackScreenProps<any, any>;
 
 export const Login = ({ navigation }: Props) => {
   const { form, onChange } = useForm({
     email: '',
-    password: ''
-  })
+    password: '',
+  });
 
-  const { email, password } = form
+  const { email, password } = form;
 
   const handleLogin = () => {
-    Keyboard.dismiss()
-  }
+    Keyboard.dismiss();
+  };
 
   return (
     <>
@@ -27,8 +35,7 @@ export const Login = ({ navigation }: Props) => {
 
       <KeyboardAvoidingView
         style={{ flex: 1 }}
-        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-      >
+        behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
         <View style={loginStyles.formContainer}>
           <ReactLogo />
           <Text style={loginStyles.title}>Login</Text>
@@ -36,11 +43,11 @@ export const Login = ({ navigation }: Props) => {
           <Text style={loginStyles.label}>Email:</Text>
           <TextInput
             placeholder="example@mail.com"
-            placeholderTextColor='rgba(255,255,255,0.4)'
-            keyboardType='email-address'
-            underlineColorAndroid='#fff'
-            selectionColor='#fff'
-            autoCapitalize='none'
+            placeholderTextColor="rgba(255,255,255,0.4)"
+            keyboardType="email-address"
+            underlineColorAndroid="#fff"
+            selectionColor="#fff"
+            autoCapitalize="none"
             autoCorrect={false}
             onChangeText={value => onChange(value, 'email')}
             value={email}
@@ -51,9 +58,9 @@ export const Login = ({ navigation }: Props) => {
           <TextInput
             secureTextEntry
             placeholder="******"
-            placeholderTextColor='rgba(255,255,255,0.4)'
-            underlineColorAndroid='#fff'
-            selectionColor='#fff'
+            placeholderTextColor="rgba(255,255,255,0.4)"
+            underlineColorAndroid="#fff"
+            selectionColor="#fff"
             onChangeText={value => onChange(value, 'password')}
             value={password}
             onSubmitEditing={handleLogin}
@@ -63,14 +70,15 @@ export const Login = ({ navigation }: Props) => {
             <TouchableOpacity
               activeOpacity={0.8}
               style={loginStyles.button}
-              onPress={handleLogin}
-            >
+              onPress={handleLogin}>
               <Text style={loginStyles.buttonText}>Login</Text>
             </TouchableOpacity>
           </View>
 
           <View style={loginStyles.newUserContainer}>
-            <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.replace('register')}>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              onPress={() => navigation.replace('register')}>
               <Text style={loginStyles.buttonText}>Create Account</Text>
             </TouchableOpacity>
           </View>

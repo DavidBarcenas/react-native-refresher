@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import { View, Text } from 'react-native';
 
 export const Protected = () => {
@@ -6,5 +6,5 @@ export const Protected = () => {
     <View>
       <Text>Protected</Text>
     </View>
-  )
-}
+  );
+};

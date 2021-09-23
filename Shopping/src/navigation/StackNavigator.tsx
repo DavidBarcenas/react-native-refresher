@@ -13,10 +13,9 @@ export const StackNavigator = () => {
       screenOptions={{
         headerShown: false,
         cardStyle: {
-          backgroundColor: '#fff'
-        }
-      }}
-    >
+          backgroundColor: '#fff',
+        },
+      }}>
       <Stack.Screen name="login" component={Login} />
       <Stack.Screen name="register" component={Register} />
       <Stack.Screen name="protected" component={Protected} />
