@@ -1,10 +1,15 @@
 import React, { useReducer } from 'react';
 import { createContext } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { AuthReducer } from './authReducer';
-import type { LoginData, Status, User } from '../types/loginResponse';
+import type {
+  LoginData,
+  Status,
+  User,
+  LoginResponse,
+} from '../types/loginResponse';
 import type { AuthState } from './authReducer';
-import { LoginResponse } from '../types/loginResponse';
 
 type ContextProps = {
   errorMessage: string;
@@ -33,7 +38,7 @@ export const AuthContext = createContext({} as ContextProps);
 export const AuthProvider = ({ children }: ProviderProps): JSX.Element => {
   const [state, dispatch] = useReducer(AuthReducer, authInitialState);
 
-  const signIn = ({ email }: LoginData): void => {
+  const signIn = async ({ email }: LoginData): Promise<void> => {
     const dummyResp: LoginResponse = {
       token: 'asdasdfas564df867sdf',
       user: {
@@ -48,10 +53,15 @@ export const AuthProvider = ({ children }: ProviderProps): JSX.Element => {
     };
 
     dispatch({ type: 'signUp', payload: dummyResp });
+    await AsyncStorage.setItem('token', dummyResp.token);
   };
+
   const signUp = (): void => {};
   const logOut = (): void => {};
-  const removeError = (): void => {};
+
+  const removeError = (): void => {
+    dispatch({ type: 'removeError' });
+  };
 
   return (
     <AuthContext.Provider
