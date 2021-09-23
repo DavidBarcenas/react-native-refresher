@@ -12,3 +12,5 @@ export type User = {
   uid: string;
   img?: string;
 };
+
+export type Status = 'checking' | 'authenticated' | 'not-authenticated';
