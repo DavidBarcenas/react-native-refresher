@@ -31,11 +31,11 @@ type ProviderProps = {
 export const AuthContext = createContext({} as ContextProps);
 
 export const AuthProvider = ({ children }: ProviderProps): JSX.Element => {
-  const [state] = useReducer(AuthReducer, authInitialState);
+  const [state, dispatch] = useReducer(AuthReducer, authInitialState);
 
   const signIn = ({ email }: LoginData): void => {
     const dummyResp: LoginResponse = {
-      token: '',
+      token: 'asdasdfas564df867sdf',
       user: {
         rol: 'manager',
         status: true,
@@ -46,6 +46,8 @@ export const AuthProvider = ({ children }: ProviderProps): JSX.Element => {
         img: '',
       },
     };
+
+    dispatch({ type: 'signUp', payload: dummyResp });
   };
   const signUp = (): void => {};
   const logOut = (): void => {};
