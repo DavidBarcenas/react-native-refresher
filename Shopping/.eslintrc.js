@@ -7,11 +7,11 @@ module.exports = {
   las desestructuraciones de los imports con una linea roja
   */
   rules: {
-    'prefer-destructuring': [
-      {
-        object: true,
-        array: true,
-      },
-    ],
+    'prefer-destructuring':
+    {
+      object: true,
+      array: true,
+    },
+
   },
 };
