@@ -11,7 +11,6 @@ export const Products = () => {
         quality: 0.7,
       },
       resp => {
-        console.log(resp);
         if (resp.didCancel || !resp.assets) {
           return;
         }
@@ -21,7 +20,21 @@ export const Products = () => {
     );
   };
 
-  const openGallery = () => {};
+  const openGallery = () => {
+    launchImageLibrary(
+      {
+        mediaType: 'photo',
+        quality: 0.7,
+      },
+      resp => {
+        if (resp.didCancel || !resp.assets) {
+          return;
+        }
+
+        setImgTemp(resp.assets[0].uri);
+      },
+    );
+  };
 
   return (
     <View>
